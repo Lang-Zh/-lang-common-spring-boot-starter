@@ -1,0 +1,224 @@
+{
+  "groups": [
+    {
+      "name": "lang.oss.gitee",
+      "type": "cn.lang.oss.properties.OssGiteeProperties",
+      "sourceType": "cn.lang.oss.properties.OssGiteeProperties"
+    },
+    {
+      "name": "lang.oss.minio",
+      "type": "cn.lang.oss.properties.OssMinioProperties",
+      "sourceType": "cn.lang.oss.properties.OssMinioProperties"
+    },
+    {
+      "name": "lang.oss.qny",
+      "type": "cn.lang.oss.properties.OssQnyProperties",
+      "sourceType": "cn.lang.oss.properties.OssQnyProperties"
+    },
+    {
+      "name": "lang.oss.upy",
+      "type": "cn.lang.oss.properties.OssUpyProperties",
+      "sourceType": "cn.lang.oss.properties.OssUpyProperties"
+    },
+    {
+      "name": "lang.trace",
+      "type": "cn.lang.trace.properties.TraceProperties",
+      "sourceType": "cn.lang.trace.properties.TraceProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "lang.oss.gitee.access-token",
+      "type": "java.lang.String",
+      "description": "Gitee private token",
+      "sourceType": "cn.lang.oss.properties.OssGiteeProperties"
+    },
+    {
+      "name": "lang.oss.gitee.base-disc",
+      "type": "java.lang.String",
+      "description": "File root directory",
+      "sourceType": "cn.lang.oss.properties.OssGiteeProperties"
+    },
+    {
+      "name": "lang.oss.gitee.domain",
+      "type": "java.lang.String",
+      "description": "Off-chain domain name",
+      "sourceType": "cn.lang.oss.properties.OssGiteeProperties"
+    },
+    {
+      "name": "lang.oss.gitee.enabled",
+      "type": "java.lang.Boolean",
+      "description": "Gitee enabled",
+      "sourceType": "cn.lang.oss.properties.OssGiteeProperties"
+    },
+    {
+      "name": "lang.oss.gitee.max-size",
+      "type": "java.lang.Long",
+      "description": "File max size",
+      "sourceType": "cn.lang.oss.properties.OssGiteeProperties"
+    },
+    {
+      "name": "lang.oss.gitee.owner",
+      "type": "java.lang.String",
+      "description": "personal space name",
+      "sourceType": "cn.lang.oss.properties.OssGiteeProperties"
+    },
+    {
+      "name": "lang.oss.gitee.repo",
+      "type": "java.lang.String",
+      "description": "Upload designated warehouse",
+      "sourceType": "cn.lang.oss.properties.OssGiteeProperties"
+    },
+    {
+      "name": "lang.oss.minio.access-key",
+      "type": "java.lang.String",
+      "description": "AccessKey",
+      "sourceType": "cn.lang.oss.properties.OssMinioProperties"
+    },
+    {
+      "name": "lang.oss.minio.base-disc",
+      "type": "java.lang.String",
+      "description": "File root directory",
+      "sourceType": "cn.lang.oss.properties.OssMinioProperties"
+    },
+    {
+      "name": "lang.oss.minio.bucket",
+      "type": "java.lang.String",
+      "description": "Storage space name",
+      "sourceType": "cn.lang.oss.properties.OssMinioProperties"
+    },
+    {
+      "name": "lang.oss.minio.domain",
+      "type": "java.lang.String",
+      "description": "Off-chain domain name",
+      "sourceType": "cn.lang.oss.properties.OssMinioProperties"
+    },
+    {
+      "name": "lang.oss.minio.enabled",
+      "type": "java.lang.Boolean",
+      "description": "minio enabled",
+      "sourceType": "cn.lang.oss.properties.OssMinioProperties"
+    },
+    {
+      "name": "lang.oss.minio.max-size",
+      "type": "java.lang.Long",
+      "description": "File max size",
+      "sourceType": "cn.lang.oss.properties.OssMinioProperties"
+    },
+    {
+      "name": "lang.oss.minio.secret-key",
+      "type": "java.lang.String",
+      "description": "SecretKey",
+      "sourceType": "cn.lang.oss.properties.OssMinioProperties"
+    },
+    {
+      "name": "lang.oss.qny.access-key",
+      "type": "java.lang.String",
+      "description": "AccessKey",
+      "sourceType": "cn.lang.oss.properties.OssQnyProperties"
+    },
+    {
+      "name": "lang.oss.qny.base-disc",
+      "type": "java.lang.String",
+      "description": "File root directory",
+      "sourceType": "cn.lang.oss.properties.OssQnyProperties"
+    },
+    {
+      "name": "lang.oss.qny.bucket",
+      "type": "java.lang.String",
+      "description": "Storage space name",
+      "sourceType": "cn.lang.oss.properties.OssQnyProperties"
+    },
+    {
+      "name": "lang.oss.qny.domain",
+      "type": "java.lang.String",
+      "description": "Off-chain domain name",
+      "sourceType": "cn.lang.oss.properties.OssQnyProperties"
+    },
+    {
+      "name": "lang.oss.qny.enabled",
+      "type": "java.lang.Boolean",
+      "description": "qiniuyun enabled",
+      "sourceType": "cn.lang.oss.properties.OssQnyProperties"
+    },
+    {
+      "name": "lang.oss.qny.max-size",
+      "type": "java.lang.Long",
+      "description": "File max size",
+      "sourceType": "cn.lang.oss.properties.OssQnyProperties"
+    },
+    {
+      "name": "lang.oss.qny.secret-key",
+      "type": "java.lang.String",
+      "description": "SecretKey",
+      "sourceType": "cn.lang.oss.properties.OssQnyProperties"
+    },
+    {
+      "name": "lang.oss.upy.base-disc",
+      "type": "java.lang.String",
+      "description": "File root directory",
+      "sourceType": "cn.lang.oss.properties.OssUpyProperties"
+    },
+    {
+      "name": "lang.oss.upy.bucket",
+      "type": "java.lang.String",
+      "description": "server name",
+      "sourceType": "cn.lang.oss.properties.OssUpyProperties"
+    },
+    {
+      "name": "lang.oss.upy.domain",
+      "type": "java.lang.String",
+      "description": "Off-chain domain name",
+      "sourceType": "cn.lang.oss.properties.OssUpyProperties"
+    },
+    {
+      "name": "lang.oss.upy.enabled",
+      "type": "java.lang.Boolean",
+      "description": "youpaiyun enabled",
+      "sourceType": "cn.lang.oss.properties.OssUpyProperties"
+    },
+    {
+      "name": "lang.oss.upy.max-size",
+      "type": "java.lang.Long",
+      "description": "File max size",
+      "sourceType": "cn.lang.oss.properties.OssUpyProperties"
+    },
+    {
+      "name": "lang.oss.upy.password",
+      "type": "java.lang.String",
+      "description": "Operator password",
+      "sourceType": "cn.lang.oss.properties.OssUpyProperties"
+    },
+    {
+      "name": "lang.oss.upy.username",
+      "type": "java.lang.String",
+      "description": "Operator name",
+      "sourceType": "cn.lang.oss.properties.OssUpyProperties"
+    },
+    {
+      "name": "lang.trace.enabled",
+      "type": "java.lang.Boolean",
+      "description": "trace open",
+      "sourceType": "cn.lang.trace.properties.TraceProperties"
+    },
+    {
+      "name": "lang.trace.feign-enabled",
+      "type": "java.lang.Boolean",
+      "description": "trace feign open",
+      "sourceType": "cn.lang.trace.properties.TraceProperties"
+    },
+    {
+      "name": "lang.trace.gateway-enabled",
+      "type": "java.lang.Boolean",
+      "description": "trace gateway open",
+      "sourceType": "cn.lang.trace.properties.TraceProperties"
+    },
+    {
+      "name": "lang.trace.request-log-enabled",
+      "type": "java.lang.Boolean",
+      "description": "request log",
+      "sourceType": "cn.lang.trace.properties.TraceProperties"
+    }
+  ],
+  "hints": []
+}

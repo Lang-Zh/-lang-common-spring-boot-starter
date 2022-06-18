@@ -1,0 +1,9 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+cn.lang.oss.configuration.OssQnyConfiguration,\
+cn.lang.oss.configuration.OssMinioConfiguration,\
+cn.lang.oss.configuration.OssGiteeConfiguration,\
+cn.lang.oss.configuration.OssUpyConfiguration,\
+cn.lang.trace.configuration.TraceConfiguration,\
+cn.lang.trace.configuration.TraceGatewayConfiguration,\
+cn.lang.trace.configuration.TraceFeignConfiguration,\
+cn.lang.global.configuration.GlobalExceptionConfiguration
