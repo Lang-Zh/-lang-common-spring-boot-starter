@@ -56,7 +56,7 @@ public class GlobalExceptionHandler {
         } else if (exception instanceof BindException) {
             bindResult = ((BindException) exception).getBindingResult();
         }
-        String msg = "";
+        String msg;
         if (bindResult != null && bindResult.hasErrors()) {
             msg = bindResult.getAllErrors().get(0).getDefaultMessage();
             if (msg != null && msg.contains("NumberFormatException")) {

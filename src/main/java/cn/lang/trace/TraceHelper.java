@@ -2,6 +2,7 @@ package cn.lang.trace;
 
 import org.slf4j.MDC;
 
+import java.util.Objects;
 import java.util.UUID;
 
 /**
@@ -42,6 +43,9 @@ public class TraceHelper {
      * @param traceId
      */
     public static void setTrace(String traceId) {
+        if (Objects.nonNull(getTrace())) {
+            return;
+        }
         if (traceId == null) {
             traceId = genTraceId();
         }
@@ -68,6 +72,7 @@ public class TraceHelper {
     public static void clearTrace() {
         TRACE_CONTEXT.set(null);
         TRACE_CONTEXT.remove();
+        MDC.clear();
     }
 
 }

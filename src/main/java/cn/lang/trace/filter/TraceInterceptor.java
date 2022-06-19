@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * TraceInterceptor
- *
+ * springmvc拦截器
  * @author Lang 1102076808@qq.com
  * @date 2022-06-16
  */
