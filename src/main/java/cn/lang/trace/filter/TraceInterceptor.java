@@ -3,7 +3,6 @@ package cn.lang.trace.filter;
 import cn.lang.trace.Trace;
 import cn.lang.trace.TraceHelper;
 import org.springframework.lang.Nullable;
-import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;

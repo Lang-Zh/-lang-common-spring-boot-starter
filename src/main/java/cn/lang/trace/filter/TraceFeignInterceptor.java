@@ -4,7 +4,6 @@ import cn.lang.trace.Trace;
 import cn.lang.trace.TraceHelper;
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
-import org.springframework.context.annotation.Configuration;
 
 /**
  * TraceFeignInterceptor

@@ -1,17 +1,10 @@
 package cn.lang.trace.configuration;
 
 import cn.lang.trace.filter.LogRecordInterceptor;
-import cn.lang.trace.filter.TraceFeignInterceptor;
-import cn.lang.trace.filter.TraceGatewayFilter;
 import cn.lang.trace.filter.TraceInterceptor;
 import cn.lang.trace.properties.TraceProperties;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.cloud.gateway.filter.GlobalFilter;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
