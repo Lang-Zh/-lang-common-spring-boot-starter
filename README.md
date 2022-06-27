@@ -4,13 +4,10 @@
 通用的工具
 
 #### 软件架构
-软件架构说明
-
-#### 安装教程
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
+- global 全局异常处理
+- oss 整合的对象存储对接
+- security 接口鉴权处理
+- trace 路由唯一id跟踪
 
 #### 使用说明
 
@@ -22,15 +19,26 @@
 ## 可参考日志MDC用法
 lang:
   trace:
-    request-log-enabled: true ## 是否开启请求日志打印
+    request-log-enabled: true ## 是否开启请求日志打印 开启后可以打印Controlelr的接口的请求参数
     enabled: true      ## 是否开启traceid记录
     feign-enabled: true  ## 是否开启feign传递traceid
-    gateway-enabled: true  ## 是否开启网关传递traceid
-  
+    gateway-enabled: true  ## 是否开启gateway网关传递traceid
+    ## 如果使用的是dubbo 会自动传递 
+
+## global模块
+lang:
   global-exception:
-     enabled: false #关闭默认全局异常处理
+    enabled: false  关闭全局异常处理 （默认是开启的）
+
+
+## oss模块
+
+
   
 ```
+
+
+
 
 #### 参与贡献
 
