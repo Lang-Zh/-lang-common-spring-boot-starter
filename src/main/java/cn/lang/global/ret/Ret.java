@@ -48,7 +48,11 @@ public class Ret<T> implements Serializable {
      */
     private String spanId;
 
-    public boolean isSuccess() {
+    public Boolean isFail() {
+        return !isSuccess();
+    }
+
+    public Boolean isSuccess() {
         return this.code == 200;
     }
 

@@ -25,6 +25,7 @@ public class TraceInterceptor implements HandlerInterceptor {
 
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, @Nullable Exception ex)  {
+        response.setHeader(Trace.TRACE_HEADER,TraceHelper.getTrace().getTraceId());
         TraceHelper.clearTrace();
     }
 

@@ -34,8 +34,8 @@ public interface PreAuthorizeHandler {
      * @param permission 权限字符串
      * @return 用户是否具备某权限
      */
-    default boolean hasPermission(String permission) {
-         return true;
+    default Boolean hasPermission(String permission) {
+         return Boolean.TRUE;
     }
 
     /**
@@ -44,7 +44,7 @@ public interface PreAuthorizeHandler {
      * @param permission 权限字符串
      * @return 用户是否不具备某权限
      */
-    default boolean lacksPermission(String permission) {
+    default Boolean lacksPermission(String permission) {
         return !hasPermission(permission);
     }
 
@@ -54,8 +54,8 @@ public interface PreAuthorizeHandler {
      * @param permissions 权限列表
      * @return 用户是否具有以下任意一个权限
      */
-    default boolean hasAnyPermission(String[] permissions) {
-        return true;
+    default Boolean hasAnyPermission(String[] permissions) {
+        return Boolean.TRUE;
     }
 
     /**
@@ -64,8 +64,8 @@ public interface PreAuthorizeHandler {
      * @param role 角色字符串
      * @return 用户是否具备某角色
      */
-    default boolean hasRole(String role) {
-        return true;
+    default Boolean hasRole(String role) {
+        return Boolean.TRUE;
     }
 
     /**
@@ -74,7 +74,7 @@ public interface PreAuthorizeHandler {
      * @param role 角色名称
      * @return 用户是否不具备某角色
      */
-    default boolean lacksRole(String role) {
+    default Boolean lacksRole(String role) {
         return !hasRole(role);
     }
 
@@ -84,8 +84,8 @@ public interface PreAuthorizeHandler {
      * @param roles 角色列表
      * @return 用户是否具有以下任意一个角色
      */
-    default boolean hasAnyRoles(String[] roles) {
-        return true;
+    default Boolean hasAnyRoles(String[] roles) {
+        return Boolean.TRUE;
     }
 
     /**
@@ -95,7 +95,7 @@ public interface PreAuthorizeHandler {
      * @param permission  权限字符串
      * @return 用户是否具备某权限
      */
-    default boolean hasPermissions(Collection<String> authorities, String permission) {
+    default Boolean hasPermissions(Collection<String> authorities, String permission) {
         return authorities.stream().filter(StringUtils::hasText)
                 .anyMatch(x -> ALL_PERMISSION.contains(x) || PatternMatchUtils.simpleMatch(permission, x));
     }
