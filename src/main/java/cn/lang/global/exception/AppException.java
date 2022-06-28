@@ -1,5 +1,6 @@
 package cn.lang.global.exception;
 
+import cn.lang.global.ret.RetBaseCode;
 import cn.lang.global.ret.RetCode;
 
 /**
@@ -10,11 +11,11 @@ import cn.lang.global.ret.RetCode;
 public class AppException extends BaseException {
 
     public AppException() {
-        super(RetCode.SYS_ERROR);
+        super(RetBaseCode.SYS_ERROR);
     }
 
     public AppException(String message) {
-        super(RetCode.SYS_ERROR, message);
+        super(RetBaseCode.SYS_ERROR, message);
     }
 
     public AppException(RetCode retCode) {

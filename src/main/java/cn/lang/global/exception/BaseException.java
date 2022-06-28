@@ -20,12 +20,16 @@ public abstract class BaseException extends RuntimeException {
         this.retCode = retCode;
     }
 
-    public BaseException(String message){
-        super(message);
+    public BaseException(String messageDetail){
+        super(messageDetail);
     }
 
-    public BaseException(RetCode retCode,String message){
-        super(message);
+    public BaseException(RetCode retCode,String messageDetail){
+        super(messageDetail);
+        this.retCode = retCode;
+    }
+
+    public void setRetCode(RetCode retCode) {
         this.retCode = retCode;
     }
 

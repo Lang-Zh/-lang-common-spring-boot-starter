@@ -1,5 +1,6 @@
 package cn.lang.global.exception;
 
+import cn.lang.global.ret.RetBaseCode;
 import cn.lang.global.ret.RetCode;
 
 /**
@@ -10,11 +11,11 @@ import cn.lang.global.ret.RetCode;
 public class ParameterException extends BaseException {
 
     public ParameterException() {
-        super(RetCode.PARAMETER_ERROR);
+        super(RetBaseCode.PARAMETER_ERROR);
     }
 
-    public ParameterException(String message) {
-        super(RetCode.PARAMETER_ERROR, message);
+    public ParameterException(String messageDetail) {
+        super(RetBaseCode.PARAMETER_ERROR, messageDetail);
     }
 
     public ParameterException(RetCode retCode) {

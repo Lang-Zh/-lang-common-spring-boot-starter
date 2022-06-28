@@ -6,4 +6,12 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class GlobalExceptionProperties {
 
     private Boolean enabled;
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
 }
