@@ -15,8 +15,8 @@ public class PreAuthorizeException extends BaseException {
         super(RetBaseCode.REQUEST_AUTHENTICATION_ERROR);
     }
 
-    public PreAuthorizeException(String message) {
-        super(RetBaseCode.REQUEST_AUTHENTICATION_ERROR, message);
+    public PreAuthorizeException(String messageDetail) {
+        super(RetBaseCode.REQUEST_AUTHENTICATION_ERROR, messageDetail);
     }
 
     public PreAuthorizeException(RetCode retCode) {

@@ -14,8 +14,8 @@ public class AppException extends BaseException {
         super(RetBaseCode.SYS_ERROR);
     }
 
-    public AppException(String message) {
-        super(RetBaseCode.SYS_ERROR, message);
+    public AppException(String messageDetail) {
+        super(RetBaseCode.SYS_ERROR, messageDetail);
     }
 
     public AppException(RetCode retCode) {
