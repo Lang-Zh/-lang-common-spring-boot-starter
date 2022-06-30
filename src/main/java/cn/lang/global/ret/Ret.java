@@ -60,7 +60,8 @@ public class Ret<T> implements Serializable {
     }
     /**
      * 成功时候的调用
-     * @param data 返回值
+     * @param data data 返回值
+     * @param <T> 返回值
      * @param messageDetail 错误描述
      * @return 统一返回包装
      */
@@ -78,7 +79,8 @@ public class Ret<T> implements Serializable {
     /**
      * 成功时候的调用
      *
-     * @param <T>  data
+     * @param data  data
+     * @param <T> 返回值
      * @return Ret
      */
     public static <T> Ret<T> success(T data) {
@@ -89,6 +91,7 @@ public class Ret<T> implements Serializable {
      * 不重载success 避免success(T data)中传入String类型值 而进入了当前方法
      *
      * @param messageDetail 错误描述
+     * @param <T> 返回值
      * @return Ret
      */
     public static <T> Ret<T> successMsg(String messageDetail) {
@@ -114,6 +117,7 @@ public class Ret<T> implements Serializable {
      * 失败时候的调用
      *
      * @param retCode retCode
+     * @param <T> 返回值
      * @return Ret 统一返回包装
      */
     public static <T> Ret<T> error(RetCode retCode) {
@@ -125,6 +129,7 @@ public class Ret<T> implements Serializable {
      * @author Lang
      * date 2020/6/22 23:19
      * @param messageDetail messageDetail
+     * @param <T> 返回值
      * @return Ret
      */
     public static <T> Ret<T> error(String messageDetail) {
