@@ -20,7 +20,8 @@ import org.springframework.context.annotation.Configuration;
 @ConditionalOnProperty(
         prefix = "lang.trace",
         name = "feign-enabled",
-        havingValue = "true"
+        havingValue = "true",
+        matchIfMissing = true
 )
 public class TraceFeignConfiguration {
 

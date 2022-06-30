@@ -18,7 +18,8 @@ import org.springframework.context.annotation.Configuration;
 @ConditionalOnProperty(
         prefix = "lang.trace",
         name = "gateway-enabled",
-        havingValue = "true"
+        havingValue = "true",
+        matchIfMissing = true
 )
 public class TraceGatewayConfiguration {
 
