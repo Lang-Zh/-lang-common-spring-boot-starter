@@ -5,8 +5,8 @@ import cn.lang.global.ret.RetCode;
 
 /**
  * @author Lang 1102076808@qq.com
- * @description 请求参数异常
- * @date 2020-06-22 22:15
+ * description 请求参数异常
+ * date 2020-06-22 22:15
  */
 public class ParameterException extends BaseException {
 

@@ -18,8 +18,8 @@ import java.util.Objects;
 
 /**
  * @author Lang 1102076808@qq.com
- * @description 全局异常处理器
- * @date 2020-06-22 22:07
+ * description 全局异常处理器
+ * date 2020-06-22 22:07
  */
 @ControllerAdvice
 @ResponseBody
@@ -29,8 +29,8 @@ public class GlobalExceptionHandler {
 
     /**
      * 所有验证框架异常捕获处理
-     *
-     * @return
+     * @param exception exception
+     * @return Object
      */
     @ExceptionHandler(value = {BindException.class, MethodArgumentNotValidException.class})
     public Object validationExceptionHandler(Exception exception) {

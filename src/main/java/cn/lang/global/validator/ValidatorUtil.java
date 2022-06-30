@@ -2,8 +2,8 @@ package cn.lang.global.validator;
 
 /**
  * @author Lang 1102076808@qq.com
- * @description 全局异常处理器
- * @date 2020-06-28 22:07
+ * description 全局异常处理器
+ * date 2020-06-28 22:07
  */
 
 import cn.lang.global.exception.BaseException;
@@ -18,7 +18,7 @@ import java.util.Set;
  * hibernate-validator校验工具类
  *
  * @author Lang 1102076808@qq.com
- * @date 2020-06-28 16:13
+ * date 2020-06-28 16:13
  */
 public class ValidatorUtil {
 

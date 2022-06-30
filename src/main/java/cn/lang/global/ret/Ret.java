@@ -1,10 +1,5 @@
 package cn.lang.global.ret;
 
-/**
- * @author Lang 1102076808@qq.com
- * @description 统一返回参数
- * @date 2020-06-22 22:13
- */
 
 import cn.lang.trace.Trace;
 import cn.lang.trace.TraceHelper;
@@ -13,6 +8,11 @@ import java.io.Serializable;
 import java.time.Instant;
 import java.util.Objects;
 
+/**
+ * @author Lang 1102076808@qq.com
+ * description 统一返回参数
+ * date 2020-06-22 22:13
+ */
 public class Ret<T> implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -60,10 +60,9 @@ public class Ret<T> implements Serializable {
     }
     /**
      * 成功时候的调用
-     * @param data
-     * @param messageDetail
-     * @param <T>
-     * @return
+     * @param data 返回值
+     * @param messageDetail 错误描述
+     * @return 统一返回包装
      */
     public static <T> Ret<T> success(T data, String messageDetail) {
         Ret<T> ret = new Ret<>(RetBaseCode.SUCCESS);
@@ -89,9 +88,8 @@ public class Ret<T> implements Serializable {
     /**
      * 不重载success 避免success(T data)中传入String类型值 而进入了当前方法
      *
-     * @param messageDetail
-     * @param <T>
-     * @return
+     * @param messageDetail 错误描述
+     * @return Ret
      */
     public static <T> Ret<T> successMsg(String messageDetail) {
         return success(null, messageDetail);
@@ -101,10 +99,10 @@ public class Ret<T> implements Serializable {
     /**
      * 失败时候的调用
      *
-     * @param retCode
-     * @param messageDetail
-     * @param <T>
-     * @return
+     * @param retCode 错误码
+     * @param messageDetail  错误描述
+     * @param <T> 返回值
+     * @return 统一返回包装
      */
     public static <T> Ret<T> error(RetCode retCode, String messageDetail) {
         Ret<T> ret = new Ret<>(retCode);
@@ -116,16 +114,18 @@ public class Ret<T> implements Serializable {
      * 失败时候的调用
      *
      * @param retCode retCode
-     * @return Ret
+     * @return Ret 统一返回包装
      */
     public static <T> Ret<T> error(RetCode retCode) {
         return new Ret<>(retCode);
     }
 
     /**
-     * @Description 失败时候的调用
+     * description 失败时候的调用
      * @author Lang
-     * @Date 2020/6/22 23:19
+     * date 2020/6/22 23:19
+     * @param messageDetail messageDetail
+     * @return Ret
      */
     public static <T> Ret<T> error(String messageDetail) {
         return error(RetBaseCode.REQUEST_ERROR, messageDetail);
@@ -134,9 +134,9 @@ public class Ret<T> implements Serializable {
     /**
      * 失败时候的调用
      * @param data 可以传RetCode
-     * @param messageDetail
-     * @param <T>
-     * @return
+     * @param messageDetail  错误描述
+     * @param <T>  返回值
+     * @return 统一返回包装
      */
     public static <T> Ret<T> error(T data, String messageDetail) {
         Ret<T> ret = error(messageDetail);

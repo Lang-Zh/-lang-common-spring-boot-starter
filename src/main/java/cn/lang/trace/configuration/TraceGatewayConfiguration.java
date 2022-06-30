@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
  * TraceGatewayConfiguration
  *
  * @author Lang 1102076808@qq.com
- * @date 2022-06-17
+ * date 2022-06-17
  */
 @Configuration
 @ConditionalOnClass(GlobalFilter.class)

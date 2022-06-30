@@ -6,10 +6,10 @@ import org.springframework.util.StringUtils;
 import java.util.Collection;
 
 /**
- * @ClassName : PreAuthorizeHandler
- * @Description : 鉴权处理器 需要使用者自己实现对应的方法
+ * ClassName : PreAuthorizeHandler
+ * description : 鉴权处理器 需要使用者自己实现对应的方法
  * @author : Lang
- * @Date: 2022-06-17
+ * date: 2022-06-17
  */
 public interface PreAuthorizeHandler {
 

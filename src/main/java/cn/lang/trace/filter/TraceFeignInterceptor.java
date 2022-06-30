@@ -9,7 +9,7 @@ import feign.RequestTemplate;
  * TraceFeignInterceptor
  * Feign提供的拦截器
  * @author Lang 1102076808@qq.com
- * @date 2022-06-17
+ * date 2022-06-17
  */
 public class TraceFeignInterceptor implements RequestInterceptor {
 

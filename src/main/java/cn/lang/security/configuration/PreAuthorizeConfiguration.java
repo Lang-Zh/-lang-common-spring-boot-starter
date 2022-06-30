@@ -8,10 +8,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @ClassName : PreAuthorizeHandler
- * @Description : 鉴权配置类
+ * ClassName : PreAuthorizeHandler
+ * description : 鉴权配置类
  * @author : Lang
- * @Date: 2022-06-18
+ * date: 2022-06-18
  */
 @Configuration
 @EnableConfigurationProperties({PreAuthorizeProperties.class})

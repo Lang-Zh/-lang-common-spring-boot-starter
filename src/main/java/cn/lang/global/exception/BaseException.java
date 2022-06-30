@@ -5,8 +5,8 @@ import cn.lang.global.ret.RetCode;
 
 /**
  * @author Lang 1102076808@qq.com
- * @description 基础异常类
- * @date 2020-06-22 22:14
+ * description 基础异常类
+ * date 2020-06-22 22:14
  */
 public abstract class BaseException extends RuntimeException {
 

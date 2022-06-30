@@ -4,9 +4,8 @@ import org.springframework.http.HttpStatus;
 
 /**
  * @author Lang 1102076808@qq.com
- * @title RetBaseCode
- * @description 异常错误码 如果不够 需要自定义错误码 自行实现RetCode接口
- * @date 2020/6/22 22:10
+ * description 异常错误码 如果不够 需要自定义错误码 自行实现RetCode接口
+ * date 2020/6/22 22:10
  */
 public enum RetBaseCode implements RetCode{
 

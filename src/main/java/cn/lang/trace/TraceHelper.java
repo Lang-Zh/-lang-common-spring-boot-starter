@@ -9,7 +9,7 @@ import java.util.UUID;
  * TraceHelper
  *
  * @author Lang 1102076808@qq.com
- * @date 2022-6-06
+ * date 2022-6-06
  */
 public class TraceHelper {
 
@@ -18,7 +18,7 @@ public class TraceHelper {
     /**
      * 生成traceId
      *
-     * @return
+     * @return traceId
      */
     public static String genTraceId() {
         return UUID.randomUUID().toString().replaceAll("-", "").substring(0, 24);
@@ -27,7 +27,7 @@ public class TraceHelper {
     /**
      * 生成spanId
      *
-     * @return
+     * @return spanId
      */
     public static String genSpanId() {
         return UUID.randomUUID().toString().replaceAll("-", "").substring(0, 16);
@@ -40,7 +40,7 @@ public class TraceHelper {
     /**
      * 设置Trace到 上下文对象 以及logback MDC
      *
-     * @param traceId
+     * @param traceId traceId
      */
     public static void setTrace(String traceId) {
         if (Objects.nonNull(getTrace())) {
@@ -60,7 +60,7 @@ public class TraceHelper {
     /**
      * 获取trace对象
      *
-     * @return
+     * @return Trace
      */
     public static Trace getTrace() {
         return TRACE_CONTEXT.get();

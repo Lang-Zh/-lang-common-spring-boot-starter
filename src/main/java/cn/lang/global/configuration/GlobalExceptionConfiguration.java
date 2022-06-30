@@ -8,8 +8,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 /**
  * @author Lang 1102076808@qq.com
- * @description GlobalExceptionConfiguration
- * @date 2022-06-18
+ * description GlobalExceptionConfiguration
+ * date 2022-06-18
  */
 @Configuration
 @EnableConfigurationProperties({GlobalExceptionProperties.class})
