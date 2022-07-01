@@ -9,10 +9,10 @@ import java.io.File;
 import java.io.InputStream;
 
 /**
- * @ClassName : YoupyOss
- * @Description : 又拍云
- * @Author : Lang
- * @Date: 2020-03-14 12:00
+ * ClassName : YoupyOss
+ * description : 又拍云
+ * @author : Lang
+ * date: 2020-03-14 12:00
  */
 public class OssUpyHandler extends OssHandler {
 
@@ -98,8 +98,8 @@ public class OssUpyHandler extends OssHandler {
     }
 
     /**
-     * @description 获取又拍云实例
-     * @date 2020-03-14 13:42
+     * description 获取又拍云实例
+     * date 2020-03-14 13:42
      */
     private UpYun getUpYunManager() {
         // 创建实例

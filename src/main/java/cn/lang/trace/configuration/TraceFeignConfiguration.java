@@ -13,14 +13,15 @@ import org.springframework.context.annotation.Configuration;
  * TraceFeignConfiguration
  *
  * @author Lang 1102076808@qq.com
- * @date 2022-06-17
+ * date 2022-06-17
  */
 @Configuration
 @ConditionalOnClass(RequestInterceptor.class)
 @ConditionalOnProperty(
         prefix = "lang.trace",
         name = "feign-enabled",
-        havingValue = "true"
+        havingValue = "true",
+        matchIfMissing = true
 )
 public class TraceFeignConfiguration {
 

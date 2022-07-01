@@ -3,6 +3,7 @@ cn.lang.oss.configuration.OssQnyConfiguration,\
 cn.lang.oss.configuration.OssMinioConfiguration,\
 cn.lang.oss.configuration.OssGiteeConfiguration,\
 cn.lang.oss.configuration.OssUpyConfiguration,\
+cn.lang.oss.configuration.OssTencentConfiguration,\
 cn.lang.trace.configuration.TraceConfiguration,\
 cn.lang.trace.configuration.TraceGatewayConfiguration,\
 cn.lang.trace.configuration.TraceFeignConfiguration,\

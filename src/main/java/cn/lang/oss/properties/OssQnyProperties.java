@@ -6,7 +6,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * 七牛云配置类
  *
  * @author Lang 1102076808@qq.com
- * @date 2021-04-08 22:06
+ * date 2021-04-08 22:06
  */
 @ConfigurationProperties(prefix = "lang.oss.qny")
 public class OssQnyProperties extends OssProperties{

@@ -10,10 +10,10 @@ import java.io.*;
 import java.net.URLConnection;
 
 /**
- * @ClassName : MinioOssHandler
- * @Description : Minio
- * @Author : Lang
- * @Date 2021-10-06 11:33
+ * ClassName : MinioOssHandler
+ * description : Minio
+ * @author : Lang
+ * date 2021-10-06 11:33
  */
 public class OssMinioHandler extends OssHandler {
 

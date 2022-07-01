@@ -4,7 +4,7 @@ package cn.lang.oss.properties;
  * Oss 配置类
  *
  * @author Lang 1102076808@qq.com
- * @date 2021-04-08 21:54
+ * date 2021-04-08 21:54
  */
 public class OssProperties {
 

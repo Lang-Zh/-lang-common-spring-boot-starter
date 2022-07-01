@@ -28,7 +28,6 @@ import java.util.concurrent.Executors;
  */
 public class OssTencentHandler extends OssHandler {
 
-
     private String domain;
 
     private OssTencentProperties ossTencentProperties;
@@ -47,11 +46,18 @@ public class OssTencentHandler extends OssHandler {
 
     @Override
     public String upload(File targetFile, String resourcesName) {
+        Upload upload = transferManager.upload(ossTencentProperties.getBucket(), resourcesName, targetFile);
+        try {
+            UploadResult uploadResult = upload.waitForUploadResult();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 
     @Override
     public String upload(File targetFile) {
+
         return null;
     }
 
@@ -129,5 +135,5 @@ public class OssTencentHandler extends OssHandler {
 
 
 
-    
+
 }

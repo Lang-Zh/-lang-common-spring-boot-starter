@@ -6,7 +6,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * 又拍云配置类
  *
  * @author Lang 1102076808@qq.com
- * @date 2021-04-08 22:04
+ * date 2021-04-08 22:04
  */
 @ConfigurationProperties(prefix = "lang.oss.upy")
 public class OssUpyProperties extends OssProperties{
