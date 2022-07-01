@@ -6,7 +6,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * Minio配置类
  *
  * @author Lang 1102076808@qq.com
- * date 2021-10-06 11:06
+ * @date 2021-10-06 11:06
  */
 @ConfigurationProperties(prefix = "lang.oss.minio")
 public class OssMinioProperties extends OssProperties{

@@ -4,7 +4,7 @@ package cn.lang.trace;
  * Trace
  *
  * @author Lang 1102076808@qq.com
- * date 2022-6-06
+ * @date 2022-6-06
  */
 public class Trace {
 

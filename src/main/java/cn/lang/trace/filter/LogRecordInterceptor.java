@@ -13,9 +13,9 @@ import java.util.Date;
 
 /**
  * Controller请求信息打印拦截器
- * springmvc拦截器
+ *
  * @author Lang 1102076808@qq.com
- * date 2022-06-17
+ * @date 2022-06-17
  */
 public class LogRecordInterceptor implements HandlerInterceptor {
 
@@ -45,6 +45,5 @@ public class LogRecordInterceptor implements HandlerInterceptor {
         sbRequest.append("----------------------------------------------------------------------------------\n");
         log.info(sbRequest.toString());
     }
-
 
 }

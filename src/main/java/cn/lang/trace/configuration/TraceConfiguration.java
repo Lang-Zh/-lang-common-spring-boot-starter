@@ -13,7 +13,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * TraceConfiguration
  *
  * @author Lang 1102076808@qq.com
- * date 2022-06-17
+ * @date 2022-06-17
  */
 @Configuration
 @EnableConfigurationProperties({TraceProperties.class})

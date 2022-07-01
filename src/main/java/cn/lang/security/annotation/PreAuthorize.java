@@ -15,37 +15,31 @@ import java.lang.annotation.Target;
 public  @interface PreAuthorize {
     /**
      * 验证用户是否具备某权限
-     * @return String
      */
     String hasPermission() default "";
 
     /**
      * 验证用户是否不具备某权限，与 lacksPermission逻辑相反
-     * @return String
      */
     String lacksPermission() default "";
 
     /**
      * 验证用户是否具有以下任意一个权限
-     * @return String[]
      */
     String[] hasAnyPermission() default {};
 
     /**
      * 判断用户是否拥有某个角色
-     * @return String
      */
     String hasRole() default "";
 
     /**
      * 验证用户是否不具备某角色，与 isRole逻辑相反
-     * @return String
      */
     String lacksRole() default "";
 
     /**
      * 验证用户是否具有以下任意一个角色
-     * @return String[]
      */
     String[] hasAnyRoles() default {};
 }

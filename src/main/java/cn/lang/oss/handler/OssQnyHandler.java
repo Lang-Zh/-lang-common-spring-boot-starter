@@ -14,10 +14,10 @@ import java.io.File;
 import java.io.InputStream;
 
 /**
- * ClassName : QiniuOss
- * description : 七牛云
- * @author : Lang
- * date: 2020-03-07 08:54
+ * @ClassName : QiniuOss
+ * @Description : 七牛云
+ * @Author : Lang
+ * @Date: 2020-03-07 08:54
  */
 public class OssQnyHandler extends OssHandler {
 
@@ -100,9 +100,8 @@ public class OssQnyHandler extends OssHandler {
     }
 
     /**
-     * description 权限
-     * date 2020-03-14 11:47
-     * @return Auth
+     * @description 权限
+     * @date 2020-03-14 11:47
      */
     public Auth getAuth() {
         return Auth.create(this.ossQnyProperties.getAccessKey(), this.ossQnyProperties.getSecretKey());
@@ -120,9 +119,8 @@ public class OssQnyHandler extends OssHandler {
     }
 
     /**
-     * description 上传
-     * date 2020-03-14 11:46
-     * @return UploadManager
+     * @description 上传
+     * @date 2020-03-14 11:46
      */
     public UploadManager getUploadManager() {
         Configuration cfg = new Configuration(Region.autoRegion());

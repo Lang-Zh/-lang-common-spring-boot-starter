@@ -11,9 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * TraceInterceptor
- * springmvc拦截器
+ *
  * @author Lang 1102076808@qq.com
- * date 2022-06-16
+ * @date 2022-06-16
  */
 public class TraceInterceptor implements HandlerInterceptor {
 
@@ -25,7 +25,6 @@ public class TraceInterceptor implements HandlerInterceptor {
 
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, @Nullable Exception ex)  {
-        response.setHeader(Trace.TRACE_HEADER,TraceHelper.getTrace().getTraceId());
         TraceHelper.clearTrace();
     }
 

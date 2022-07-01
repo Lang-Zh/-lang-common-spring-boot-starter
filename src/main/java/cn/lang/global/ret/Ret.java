@@ -1,18 +1,19 @@
 package cn.lang.global.ret;
 
+/**
+ * @author Lang 1102076808@qq.com
+ * @description
+ * @date 2020-06-22 22:13
+ */
 
 import cn.lang.trace.Trace;
 import cn.lang.trace.TraceHelper;
+import org.springframework.http.HttpStatus;
 
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.Objects;
 
-/**
- * @author Lang 1102076808@qq.com
- * description 统一返回参数
- * date 2020-06-22 22:13
- */
 public class Ret<T> implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -28,10 +29,6 @@ public class Ret<T> implements Serializable {
      * 错误的具体信息
      */
     private String message;
-    /**
-     * 开发错误信息
-     */
-    private String messageDetail;
     /**
      * 发生错误的时间戳
      */
@@ -51,65 +48,30 @@ public class Ret<T> implements Serializable {
      */
     private String spanId;
 
-    public Boolean isOk() {
+    public boolean isSuccess() {
         return this.code == 200;
     }
 
     public static <T> Ret<T> success() {
-        return new Ret<>(RetBaseCode.SUCCESS);
-    }
-    /**
-     * 成功时候的调用
-     * @param data data 返回值
-     * @param <T> 返回值
-     * @param messageDetail 错误描述
-     * @return 统一返回包装
-     */
-    public static <T> Ret<T> success(T data, String messageDetail) {
-        Ret<T> ret = new Ret<>(RetBaseCode.SUCCESS);
-        if (Objects.nonNull(data)){
-            ret.setData(data);
-        }
-        if (Objects.nonNull(messageDetail)){
-            ret.setMessageDetail(messageDetail);
-        }
-        return ret;
+        return new Ret<>(RetCode.SUCCESS);
     }
 
     /**
      * 成功时候的调用
      *
-     * @param data  data
-     * @param <T> 返回值
+     * @param data data
+     * @param <T>  t
      * @return Ret
      */
     public static <T> Ret<T> success(T data) {
-        return success(data, null);
+        Ret<T> ret = new Ret<>(RetCode.SUCCESS);
+        ret.setData(data);
+        return ret;
     }
 
-    /**
-     * 不重载success 避免success(T data)中传入String类型值 而进入了当前方法
-     *
-     * @param messageDetail 错误描述
-     * @param <T> 返回值
-     * @return Ret
-     */
-    public static <T> Ret<T> successMsg(String messageDetail) {
-        return success(null, messageDetail);
-    }
-
-
-    /**
-     * 失败时候的调用
-     *
-     * @param retCode 错误码
-     * @param messageDetail  错误描述
-     * @param <T> 返回值
-     * @return 统一返回包装
-     */
-    public static <T> Ret<T> error(RetCode retCode, String messageDetail) {
-        Ret<T> ret = new Ret<>(retCode);
-        ret.setMessageDetail(messageDetail);
+    public static <T> Ret<T> success(String message) {
+        Ret<T> ret = new Ret<>(RetCode.SUCCESS);
+        ret.setMessage(message);
         return ret;
     }
 
@@ -117,40 +79,35 @@ public class Ret<T> implements Serializable {
      * 失败时候的调用
      *
      * @param retCode retCode
-     * @param <T> 返回值
-     * @return Ret 统一返回包装
+     * @return Ret
      */
     public static <T> Ret<T> error(RetCode retCode) {
         return new Ret<>(retCode);
     }
 
     /**
-     * description 失败时候的调用
+     * @Description 失败时候的调用
      * @author Lang
-     * date 2020/6/22 23:19
-     * @param messageDetail messageDetail
-     * @param <T> 返回值
-     * @return Ret
+     * @Date 2020/6/22 23:19
      */
-    public static <T> Ret<T> error(String messageDetail) {
-        return error(RetBaseCode.REQUEST_ERROR, messageDetail);
+    public static <T> Ret<T> error(String message) {
+        Ret<T> ret = new Ret<>(RetCode.REQUEST_ERROR);
+        ret.setMessage(message);
+        return ret;
     }
 
-    /**
-     * 失败时候的调用
-     * @param data 可以传RetCode
-     * @param messageDetail  错误描述
-     * @param <T>  返回值
-     * @return 统一返回包装
-     */
-    public static <T> Ret<T> error(T data, String messageDetail) {
-        Ret<T> ret = error(messageDetail);
+    public static <T> Ret<T> error(T data, String message) {
+        RetCode retCode = RetCode.REQUEST_ERROR;
+        if (data instanceof RetCode) {
+            retCode = (RetCode) data;
+        }
+        Ret<T> ret = new Ret<>(retCode);
+        ret.setMessage(message);
         ret.setData(data);
         return ret;
     }
 
     public Ret() {
-        initTrace();
     }
 
     /**
@@ -160,9 +117,9 @@ public class Ret<T> implements Serializable {
      */
     public Ret(T data) {
         //默认200是成功
-        this.code = RetBaseCode.SUCCESS.getCode();
-        this.status = RetBaseCode.SUCCESS.getStatus().value();
-        this.message = RetBaseCode.SUCCESS.getMessage();
+        this.code = 200;
+        this.status = HttpStatus.OK.value();
+        this.message = "操作成功";
         this.data = data;
         this.timestamp = Instant.now();
         initTrace();
@@ -189,7 +146,7 @@ public class Ret<T> implements Serializable {
 
     private void initTrace() {
         Trace trace = TraceHelper.getTrace();
-        if (Objects.nonNull(trace)) {
+        if (!Objects.isNull(trace)) {
             this.traceId = trace.getTraceId();
             this.spanId = trace.getSpanId();
         }
@@ -218,7 +175,7 @@ public class Ret<T> implements Serializable {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 
@@ -228,14 +185,6 @@ public class Ret<T> implements Serializable {
 
     public void setMessage(String message) {
         this.message = message;
-    }
-
-    public String getMessageDetail() {
-        return messageDetail;
-    }
-
-    public void setMessageDetail(String messageDetail) {
-        this.messageDetail = messageDetail;
     }
 
     public Instant getTimestamp() {

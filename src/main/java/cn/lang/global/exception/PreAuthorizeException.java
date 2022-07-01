@@ -1,7 +1,6 @@
 package cn.lang.global.exception;
 
 
-import cn.lang.global.ret.RetBaseCode;
 import cn.lang.global.ret.RetCode;
 
 /**
@@ -12,11 +11,11 @@ import cn.lang.global.ret.RetCode;
 public class PreAuthorizeException extends BaseException {
 
     public PreAuthorizeException() {
-        super(RetBaseCode.REQUEST_AUTHENTICATION_ERROR);
+        super(RetCode.REQUEST_AUTHENTICATION_ERROR);
     }
 
-    public PreAuthorizeException(String messageDetail) {
-        super(RetBaseCode.REQUEST_AUTHENTICATION_ERROR, messageDetail);
+    public PreAuthorizeException(String message) {
+        super(RetCode.REQUEST_AUTHENTICATION_ERROR, message);
     }
 
     public PreAuthorizeException(RetCode retCode) {

@@ -2,14 +2,13 @@ package cn.lang.trace;
 
 import org.slf4j.MDC;
 
-import java.util.Objects;
 import java.util.UUID;
 
 /**
  * TraceHelper
  *
  * @author Lang 1102076808@qq.com
- * date 2022-6-06
+ * @date 2022-6-06
  */
 public class TraceHelper {
 
@@ -18,7 +17,7 @@ public class TraceHelper {
     /**
      * 生成traceId
      *
-     * @return traceId
+     * @return
      */
     public static String genTraceId() {
         return UUID.randomUUID().toString().replaceAll("-", "").substring(0, 24);
@@ -27,7 +26,7 @@ public class TraceHelper {
     /**
      * 生成spanId
      *
-     * @return spanId
+     * @return
      */
     public static String genSpanId() {
         return UUID.randomUUID().toString().replaceAll("-", "").substring(0, 16);
@@ -40,12 +39,9 @@ public class TraceHelper {
     /**
      * 设置Trace到 上下文对象 以及logback MDC
      *
-     * @param traceId traceId
+     * @param traceId
      */
     public static void setTrace(String traceId) {
-        if (Objects.nonNull(getTrace())) {
-            return;
-        }
         if (traceId == null) {
             traceId = genTraceId();
         }
@@ -60,7 +56,7 @@ public class TraceHelper {
     /**
      * 获取trace对象
      *
-     * @return Trace
+     * @return
      */
     public static Trace getTrace() {
         return TRACE_CONTEXT.get();
@@ -72,7 +68,6 @@ public class TraceHelper {
     public static void clearTrace() {
         TRACE_CONTEXT.set(null);
         TRACE_CONTEXT.remove();
-        MDC.clear();
     }
 
 }

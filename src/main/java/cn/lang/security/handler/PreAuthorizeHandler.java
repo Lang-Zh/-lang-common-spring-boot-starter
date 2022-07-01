@@ -6,10 +6,10 @@ import org.springframework.util.StringUtils;
 import java.util.Collection;
 
 /**
- * ClassName : PreAuthorizeHandler
- * description : 鉴权处理器 需要使用者自己实现对应的方法
+ * @ClassName : PreAuthorizeHandler
+ * @Description : 鉴权处理器 需要使用者自己实现对应的方法
  * @author : Lang
- * date: 2022-06-17
+ * @Date: 2022-06-17
  */
 public interface PreAuthorizeHandler {
 
@@ -34,8 +34,8 @@ public interface PreAuthorizeHandler {
      * @param permission 权限字符串
      * @return 用户是否具备某权限
      */
-    default Boolean hasPermission(String permission) {
-         return Boolean.TRUE;
+    default boolean hasPermission(String permission) {
+         return true;
     }
 
     /**
@@ -44,7 +44,7 @@ public interface PreAuthorizeHandler {
      * @param permission 权限字符串
      * @return 用户是否不具备某权限
      */
-    default Boolean lacksPermission(String permission) {
+    default boolean lacksPermission(String permission) {
         return !hasPermission(permission);
     }
 
@@ -54,8 +54,8 @@ public interface PreAuthorizeHandler {
      * @param permissions 权限列表
      * @return 用户是否具有以下任意一个权限
      */
-    default Boolean hasAnyPermission(String[] permissions) {
-        return Boolean.TRUE;
+    default boolean hasAnyPermission(String[] permissions) {
+        return true;
     }
 
     /**
@@ -64,8 +64,8 @@ public interface PreAuthorizeHandler {
      * @param role 角色字符串
      * @return 用户是否具备某角色
      */
-    default Boolean hasRole(String role) {
-        return Boolean.TRUE;
+    default boolean hasRole(String role) {
+        return true;
     }
 
     /**
@@ -74,7 +74,7 @@ public interface PreAuthorizeHandler {
      * @param role 角色名称
      * @return 用户是否不具备某角色
      */
-    default Boolean lacksRole(String role) {
+    default boolean lacksRole(String role) {
         return !hasRole(role);
     }
 
@@ -84,8 +84,8 @@ public interface PreAuthorizeHandler {
      * @param roles 角色列表
      * @return 用户是否具有以下任意一个角色
      */
-    default Boolean hasAnyRoles(String[] roles) {
-        return Boolean.TRUE;
+    default boolean hasAnyRoles(String[] roles) {
+        return true;
     }
 
     /**
@@ -95,7 +95,7 @@ public interface PreAuthorizeHandler {
      * @param permission  权限字符串
      * @return 用户是否具备某权限
      */
-    default Boolean hasPermissions(Collection<String> authorities, String permission) {
+    default boolean hasPermissions(Collection<String> authorities, String permission) {
         return authorities.stream().filter(StringUtils::hasText)
                 .anyMatch(x -> ALL_PERMISSION.contains(x) || PatternMatchUtils.simpleMatch(permission, x));
     }

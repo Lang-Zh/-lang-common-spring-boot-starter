@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
  * 七牛云配置
  *
  * @author Lang 1102076808@qq.com
- * date 2021-04-08 22:33
+ * @date 2021-04-08 22:33
  */
 
 @Configuration

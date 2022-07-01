@@ -10,7 +10,7 @@ import java.util.Objects;
  * 对象存储处理器抽象类
  *
  * @author Lang 1102076808@qq.com
- * date 2022-1-6 11:03
+ * @date 2022-1-6 11:03
  */
 
 public abstract class OssHandler implements Oss {

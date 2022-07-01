@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
  * Gitee配置
  *
  * @author Lang 1102076808@qq.com
- * date 2022-1-06 11:33
+ * @date 2022-1-06 11:33
  */
 
 @Configuration
