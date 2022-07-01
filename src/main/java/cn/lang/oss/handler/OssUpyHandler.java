@@ -11,15 +11,11 @@ import java.io.InputStream;
 /**
  * ClassName : YoupyOss
  * description : 又拍云
+ *
  * @author : Lang
  * date: 2020-03-14 12:00
  */
 public class OssUpyHandler extends OssHandler {
-
-    /**
-     * 外链域名
-     */
-    private String domain;
 
     /**
      * 又拍云实例
@@ -30,19 +26,10 @@ public class OssUpyHandler extends OssHandler {
 
     Logger logger = LoggerFactory.getLogger(OssUpyHandler.class);
 
-    public OssUpyHandler() {
-    }
-
     public OssUpyHandler(OssUpyProperties ossUpyProperties) {
-        super(ossUpyProperties);
+        ossPropertiesInit(ossUpyProperties);
         this.ossUpyProperties = ossUpyProperties;
-        this.domain = ossUpyProperties.getDomain();
         this.upyun = getUpYunManager();
-    }
-
-    @Override
-    public String upload(File targetFile) {
-        return this.upload(targetFile, targetFile.getName());
     }
 
     @Override
@@ -50,12 +37,12 @@ public class OssUpyHandler extends OssHandler {
         try {
             resourcesName = ossUpyProperties.getBaseDisc() + resourcesName;
             upyun.writeFile(resourcesName, targetFile, true);
+            logger.info("又拍云对象存储上传成功:{}", resourcesName);
+            return resourcesName;
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("又拍云对象存储上传异常", e);
         }
-        String url = this.domain + resourcesName;
-        logger.info("上传成功:{}",url);
-        return url;
+        return null;
     }
 
     @Override
@@ -63,12 +50,12 @@ public class OssUpyHandler extends OssHandler {
         try {
             resourcesName = ossUpyProperties.getBaseDisc() + resourcesName;
             upyun.writeFile(resourcesName, targetName, true);
+            logger.info("又拍云对象存储上传成功:{}", resourcesName);
+            return resourcesName;
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("又拍云对象存储上传异常", e);
         }
-        String url = this.domain + resourcesName;
-        logger.info("上传成功:{}",url);
-        return url;
+        return null;
     }
 
     @Override
@@ -76,12 +63,12 @@ public class OssUpyHandler extends OssHandler {
         try {
             resourcesName = ossUpyProperties.getBaseDisc() + resourcesName;
             upyun.writeFile(resourcesName, data, true);
+            logger.info("又拍云对象存储上传成功:{}", resourcesName);
+            return resourcesName;
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("又拍云对象存储上传异常", e);
         }
-        String url = this.domain + resourcesName;
-        logger.info("上传成功:{}",url);
-        return url;
+        return null;
     }
 
     @Override
@@ -89,12 +76,17 @@ public class OssUpyHandler extends OssHandler {
         try {
             resourcesName = ossUpyProperties.getBaseDisc() + resourcesName;
             upyun.writeFile(resourcesName, inputStream, false, null);
+            logger.info("又拍云对象存储上传成功:{}", resourcesName);
+            return resourcesName;
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("又拍云对象存储上传异常", e);
         }
-        String url = this.domain + resourcesName;
-        logger.info("上传成功:{}",url);
-        return url;
+        return null;
+    }
+
+    @Override
+    public String getUrl(String resourcesName) {
+        return ossUpyProperties.getDomain() + resourcesName;
     }
 
     /**

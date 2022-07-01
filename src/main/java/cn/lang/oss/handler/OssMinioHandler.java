@@ -3,15 +3,19 @@ package cn.lang.oss.handler;
 import cn.lang.oss.properties.OssMinioProperties;
 import io.minio.MinioClient;
 import io.minio.PutObjectOptions;
+import io.minio.errors.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.net.URLConnection;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 
 /**
  * ClassName : MinioOssHandler
  * description : Minio
+ *
  * @author : Lang
  * date 2021-10-06 11:33
  */
@@ -25,7 +29,7 @@ public class OssMinioHandler extends OssHandler {
 
 
     public OssMinioHandler(OssMinioProperties ossMinioProperties) {
-        super(ossMinioProperties);
+        ossPropertiesInit(ossMinioProperties);
         this.ossMinioProperties = ossMinioProperties;
         this.minioClient = getMinioClient();
     }
@@ -43,25 +47,21 @@ public class OssMinioHandler extends OssHandler {
             }
             return minioClient;
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("Minio对象存储初始化异常", e);
         }
         return null;
-    }
-
-    @Override
-    public String upload(File targetFile) {
-        return this.upload(targetFile, targetFile.getName());
     }
 
     public String upload(InputStream targetInputStream, String resourcesName, String contentType) {
         try {
             PutObjectOptions options = new PutObjectOptions(targetInputStream.available(), -1);
             options.setContentType(contentType);
-            resourcesName = ossMinioProperties.getBaseDisc()+resourcesName;
+            resourcesName = ossMinioProperties.getBaseDisc() + resourcesName;
             minioClient.putObject(this.ossMinioProperties.getBucket(), resourcesName, targetInputStream, options);
-            return minioClient.getObjectUrl(this.ossMinioProperties.getBucket(), resourcesName);
+            logger.info("Minio对象存储上传成功:{}", resourcesName);
+            return resourcesName;
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("Minio对象存储上传异常", e);
         }
         return null;
     }
@@ -75,11 +75,22 @@ public class OssMinioHandler extends OssHandler {
             if (contentType != null && !contentType.equals("")) {
                 options.setContentType(contentType);
             }
-            resourcesName = ossMinioProperties.getBaseDisc()+resourcesName;
+            resourcesName = ossMinioProperties.getBaseDisc() + resourcesName;
             minioClient.putObject(this.ossMinioProperties.getBucket(), resourcesName, targetInputStream, options);
+            logger.info("Minio对象存储上传成功:{}", resourcesName);
+            return resourcesName;
+        } catch (Exception e) {
+            logger.error("Minio对象存储上传异常", e);
+        }
+        return null;
+    }
+
+    @Override
+    public String getUrl(String resourcesName) {
+        try {
             return minioClient.getObjectUrl(this.ossMinioProperties.getBucket(), resourcesName);
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("Minio对象存储获取外链地址异常", e);
         }
         return null;
     }
@@ -93,10 +104,12 @@ public class OssMinioHandler extends OssHandler {
     @Override
     public String upload(String targetName, String resourcesName) {
         try {
+            resourcesName = ossMinioProperties.getBaseDisc() + resourcesName;
             minioClient.putObject(this.ossMinioProperties.getBucket(), resourcesName, targetName, null);
-            return minioClient.getObjectUrl(this.ossMinioProperties.getBucket(), resourcesName);
+            logger.info("Minio对象存储上传成功:{}", resourcesName);
+            return resourcesName;
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("Minio对象存储上传异常", e);
         }
         return null;
     }

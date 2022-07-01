@@ -2,7 +2,6 @@ package cn.lang.oss.handler;
 
 import cn.lang.oss.properties.OssQnyProperties;
 import com.qiniu.common.QiniuException;
-import com.qiniu.storage.BucketManager;
 import com.qiniu.storage.Configuration;
 import com.qiniu.storage.Region;
 import com.qiniu.storage.UploadManager;
@@ -16,6 +15,7 @@ import java.io.InputStream;
 /**
  * ClassName : QiniuOss
  * description : 七牛云
+ *
  * @author : Lang
  * date: 2020-03-07 08:54
  */
@@ -23,41 +23,30 @@ public class OssQnyHandler extends OssHandler {
 
     private UploadManager uploadManager;
 
-    private BucketManager bucketManager;
-
     private String token;
-
-    private String domain;
 
     private OssQnyProperties ossQnyProperties;
 
     Logger logger = LoggerFactory.getLogger(OssQnyHandler.class);
 
     public OssQnyHandler(OssQnyProperties ossQnyProperties) {
-        super(ossQnyProperties);
+        ossPropertiesInit(ossQnyProperties);
         this.ossQnyProperties = ossQnyProperties;
         this.token = getToken();
         this.uploadManager = getUploadManager();
-        this.bucketManager = getBucketManager();
-        this.domain = ossQnyProperties.getDomain();
-    }
-
-    @Override
-    public String upload(File targetFile) {
-        return this.upload(targetFile, targetFile.getName());
     }
 
     @Override
     public String upload(File targetFile, String resourcesName) {
         try {
+            resourcesName = ossQnyProperties.getBaseDisc() + resourcesName;
             uploadManager.put(targetFile, resourcesName, this.token);
+            logger.info("七牛云对象存储上传成功:{}", resourcesName);
+            return resourcesName;
         } catch (QiniuException e) {
-            logger.info("上传失败");
-            e.printStackTrace();
+            logger.info("七牛云对象存储上传异常", e);
         }
-        String url = this.domain + resourcesName;
-        logger.info("上传成功:{}",url);
-        return url;
+        return null;
     }
 
     @Override
@@ -65,12 +54,12 @@ public class OssQnyHandler extends OssHandler {
         try {
             resourcesName = ossQnyProperties.getBaseDisc() + resourcesName;
             uploadManager.put(targetName, resourcesName, this.token);
+            logger.info("七牛云对象存储上传成功:{}", resourcesName);
+            return resourcesName;
         } catch (QiniuException e) {
-            e.printStackTrace();
+            logger.info("七牛云对象存储上传异常", e);
         }
-        String url = this.domain + resourcesName;
-        logger.info("上传成功:{}",url);
-        return url;
+        return null;
     }
 
     @Override
@@ -78,12 +67,12 @@ public class OssQnyHandler extends OssHandler {
         try {
             resourcesName = ossQnyProperties.getBaseDisc() + resourcesName;
             uploadManager.put(data, resourcesName, this.token);
+            logger.info("七牛云对象存储上传成功:{}", resourcesName);
+            return resourcesName;
         } catch (QiniuException e) {
-            e.printStackTrace();
+            logger.info("七牛云对象存储上传异常", e);
         }
-        String url = this.domain + resourcesName;
-        logger.info("上传成功:{}",url);
-        return url;
+        return null;
     }
 
     @Override
@@ -91,17 +80,23 @@ public class OssQnyHandler extends OssHandler {
         try {
             resourcesName = ossQnyProperties.getBaseDisc() + resourcesName;
             uploadManager.put(inputStream, resourcesName, this.token, null, null);
+            logger.info("七牛云对象存储上传成功:{}", resourcesName);
+            return resourcesName;
         } catch (QiniuException e) {
-            e.printStackTrace();
+            logger.info("七牛云对象存储上传异常", e);
         }
-        String url = this.domain + resourcesName;
-        logger.info("上传成功:{}",url);
-        return url;
+        return null;
+    }
+
+    @Override
+    public String getUrl(String resourcesName) {
+        return ossQnyProperties.getDomain() + resourcesName;
     }
 
     /**
      * description 权限
      * date 2020-03-14 11:47
+     *
      * @return Auth
      */
     public Auth getAuth() {
@@ -112,16 +107,10 @@ public class OssQnyHandler extends OssHandler {
         return getAuth().uploadToken(this.ossQnyProperties.getBucket());
     }
 
-    public BucketManager getBucketManager() {
-        Auth auth = getAuth();
-        //构造一个带指定Zone对象的配置类
-        Configuration cfg = new Configuration(Region.autoRegion());
-        return new BucketManager(auth, cfg);
-    }
-
     /**
      * description 上传
      * date 2020-03-14 11:46
+     *
      * @return UploadManager
      */
     public UploadManager getUploadManager() {

@@ -32,12 +32,10 @@ public class OssGiteeHandler extends OssHandler {
      */
     private final String API_CREATE_POST = "https://gitee.com/api/v5/repos/%s/%s/contents/%s";
 
-    Logger logger = LoggerFactory.getLogger(OssGiteeHandler.class);
+    private Logger logger = LoggerFactory.getLogger(OssGiteeHandler.class);
 
-    public OssGiteeHandler(){}
-
-    public OssGiteeHandler(OssGiteeProperties ossGiteeProperties){
-        super(ossGiteeProperties);
+    public OssGiteeHandler(OssGiteeProperties ossGiteeProperties) {
+        ossPropertiesInit(ossGiteeProperties);
         this.ossGiteeProperties = ossGiteeProperties;
     }
 
@@ -45,7 +43,7 @@ public class OssGiteeHandler extends OssHandler {
     public String upload(File targetFile, String resourcesName) {
         try {
             FileInputStream fileInputStream = new FileInputStream(targetFile);
-            return upload(fileInputStream,resourcesName);
+            return upload(fileInputStream, resourcesName);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -53,15 +51,10 @@ public class OssGiteeHandler extends OssHandler {
     }
 
     @Override
-    public String upload(File targetFile) {
-        return upload(targetFile,targetFile.getName());
-    }
-
-    @Override
     public String upload(String targetName, String resourcesName) {
 
-        if(StrUtil.isBlank(targetName)){
-            logger.error("文件地址不能为空：{}",targetName);
+        if (StrUtil.isBlank(targetName)) {
+            logger.error("文件地址targetName不能为空：{}", targetName);
             return null;
         }
         Path filePath = Paths.get(targetName);
@@ -69,7 +62,7 @@ public class OssGiteeHandler extends OssHandler {
             logger.error(targetName + " not a regular file");
             return null;
         }
-        return upload(filePath.toFile(),resourcesName);
+        return upload(filePath.toFile(), resourcesName);
     }
 
     @Override
@@ -82,12 +75,12 @@ public class OssGiteeHandler extends OssHandler {
         Map<String, Object> uploadBodyMap = this.getUploadBodyMap(data);
         String ret = HttpUtil.post(targetUrl, uploadBodyMap);
         JSONObject jsonObject = JSONUtil.parseObj(ret);
-        if(ObjectUtil.isEmpty(jsonObject)){
-            logger.error("上传失败");
+        if (ObjectUtil.isEmpty(jsonObject)) {
+            logger.error("Gitee上传失败");
             return null;
         }
         String url = jsonObject.getJSONObject("content").getStr("download_url");
-        logger.info("上传成功:{}",url);
+        logger.info("Gitee上传成功:{}", url);
         return url;
 
     }
@@ -95,7 +88,12 @@ public class OssGiteeHandler extends OssHandler {
     @Override
     public String upload(InputStream inputStream, String resourcesName) {
         byte[] data = IoUtil.readBytes(inputStream);
-        return upload(data,resourcesName);
+        return upload(data, resourcesName);
+    }
+
+    @Override
+    public String getUrl(String resourcesName) {
+        return resourcesName;
     }
 
 

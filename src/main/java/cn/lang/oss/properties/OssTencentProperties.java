@@ -6,7 +6,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * 腾讯云 COS 配置类
  *
  * @author Lang 1102076808@qq.com
- * @date 2022-07-01
+ * date 2022-07-01
  */
 @ConfigurationProperties(prefix = "lang.oss.tencent")
 public class OssTencentProperties extends OssProperties{
@@ -29,6 +29,7 @@ public class OssTencentProperties extends OssProperties{
 	 */
 	private  String bucket;
 
+	private String region;
 
 	public String getSecretId() {
 		return secretId;
@@ -60,5 +61,13 @@ public class OssTencentProperties extends OssProperties{
 
 	public void setEnabled(Boolean enabled) {
 		this.enabled = enabled;
+	}
+
+	public String getRegion() {
+		return region;
+	}
+
+	public void setRegion(String region) {
+		this.region = region;
 	}
 }
