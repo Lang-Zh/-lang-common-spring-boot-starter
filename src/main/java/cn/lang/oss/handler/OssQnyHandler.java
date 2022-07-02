@@ -93,6 +93,13 @@ public class OssQnyHandler extends OssHandler {
         return ossQnyProperties.getDomain() + resourcesName;
     }
 
+    @Override
+    public Oss setBucket(String bucket) {
+        this.ossQnyProperties.setBucket(bucket);
+        this.token = getToken();
+        return this;
+    }
+
     /**
      * description 权限
      * date 2020-03-14 11:47

@@ -96,6 +96,12 @@ public class OssGiteeHandler extends OssHandler {
         return resourcesName;
     }
 
+    @Override
+    public Oss setBucket(String bucket) {
+        logger.error("暂时不支持");
+        return null;
+    }
+
 
     /**
      * 获取创建文件的请求体map集合：access_token、message、content

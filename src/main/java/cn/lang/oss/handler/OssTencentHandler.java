@@ -19,8 +19,8 @@ import org.slf4j.LoggerFactory;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.InputStream;
-import java.net.URL;
-import java.util.concurrent.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * ClassName : QiniuOss
@@ -94,6 +94,14 @@ public class OssTencentHandler extends OssHandler {
     @Override
     public String getUrl(String resourcesName) {
         return cosClient.getObjectUrl(ossTencentProperties.getBucket(), resourcesName).toString();
+    }
+
+    @Override
+    public Oss setBucket(String bucket) {
+        ossTencentProperties.setBucket(bucket);
+        this.cosClient = createCOSClient();
+        this.transferManager = createTransferManager();
+        return this;
     }
 
     /**

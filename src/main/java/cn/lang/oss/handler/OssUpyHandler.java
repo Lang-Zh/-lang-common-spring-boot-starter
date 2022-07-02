@@ -89,6 +89,13 @@ public class OssUpyHandler extends OssHandler {
         return ossUpyProperties.getDomain() + resourcesName;
     }
 
+    @Override
+    public Oss setBucket(String bucket) {
+        this.ossUpyProperties.setBucket(bucket);
+        this.upyun = getUpYunManager();
+        return this;
+    }
+
     /**
      * description 获取又拍云实例
      * date 2020-03-14 13:42

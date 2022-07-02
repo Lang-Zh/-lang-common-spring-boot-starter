@@ -23,7 +23,7 @@ public class OssMinioHandler extends OssHandler {
 
     Logger logger = LoggerFactory.getLogger(OssMinioHandler.class);
 
-    private final MinioClient minioClient;
+    private MinioClient minioClient;
 
     private final OssMinioProperties ossMinioProperties;
 
@@ -93,6 +93,13 @@ public class OssMinioHandler extends OssHandler {
             logger.error("Minio对象存储获取外链地址异常", e);
         }
         return null;
+    }
+
+    @Override
+    public Oss setBucket(String bucket) {
+        this.ossMinioProperties.setBucket(bucket);
+        this.minioClient = getMinioClient();
+        return this;
     }
 
     @Override

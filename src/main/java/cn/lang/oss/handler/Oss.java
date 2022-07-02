@@ -78,4 +78,11 @@ public interface Oss {
      */
     String getUrl(String resourcesName);
 
+    /**
+     * 多个bucket的情况 切换bucket
+     * @param bucket bucket
+     * @return Oss
+     */
+    Oss setBucket(String bucket);
+
 }
