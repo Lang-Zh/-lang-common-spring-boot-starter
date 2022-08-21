@@ -3,7 +3,12 @@ bin-debug/
 bin-release/
 [Oo]bj/
 [Bb]in/
-
+target/
+.mvn
+.idea
+*.iml
+*.cmd
+*.class
 # Other files and folders
 .settings/
 
