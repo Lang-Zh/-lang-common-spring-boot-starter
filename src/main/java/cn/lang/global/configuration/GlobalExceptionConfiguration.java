@@ -20,7 +20,6 @@ import org.springframework.context.annotation.Configuration;
         matchIfMissing = true
 )
 public class GlobalExceptionConfiguration {
-
     @Bean
     public GlobalExceptionHandler globalExceptionHandler(){
         return new GlobalExceptionHandler();
