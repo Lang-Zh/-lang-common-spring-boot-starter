@@ -8,7 +8,6 @@ import cn.lang.global.ret.RetCode;
  * 断言工具类
  *
  * @author zhangren
- * @date 2022/09/03
  */
 public class AssertUtil extends Assert {
 
@@ -34,8 +33,6 @@ public class AssertUtil extends Assert {
     /**
      * 断言未来
      *
-     * @author zhangren
-     * @date 2022/09/05
      */
     @FunctionalInterface
     public interface AssertFuture {

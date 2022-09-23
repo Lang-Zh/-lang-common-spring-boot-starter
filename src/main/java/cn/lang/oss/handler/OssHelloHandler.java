@@ -76,7 +76,11 @@ public class OssHelloHandler extends OssHandler {
             logger.error("Hello上传失败");
             return null;
         }
-        String url = jsonObject.getJSONObject("content").getStr("download_url");
+        if (ObjectUtil.notEqual(200, jsonObject.getInt("status_code"))) {
+            logger.error("Hello上传失败");
+            return null;
+        }
+        String url = jsonObject.getJSONObject("image").getStr("url");
         logger.info("Hello上传成功:{}", url);
         return url;
 
